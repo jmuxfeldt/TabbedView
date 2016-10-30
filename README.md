@@ -1,4 +1,6 @@
 # TabbedView
+A Quark for the SuperCollider porgramming Language
+
 deprecated. Please use TabbedView2 instead.
 an array of CompositeViews (or ScrollViews) with tabs for switching
 
