@@ -4,6 +4,6 @@
 	\summary:	"Tabbed Composite/Scroll : Deprecated. Pleas use TabbedView2",
 	\author: 		"Jost Muxfeldt",
 	\schelp:        "TabbedView",
-	\version:		"1.2.11",
+	\version:		"1.2.12",
 	\url:           "https://github.com/jmuxfeldt/TabbedView"
 )

@@ -6,7 +6,7 @@ related:: Classes/TabbedView2,Classes/CompositeView, Classes/ScrollView, etc.
 DESCRIPTION::
 There are extensive explanations in the LINK::#Examples:: section on how to use TabbedView with its many configuration options .
 SUBSECTION:: Author
-by Jost Muxfeldt, OCT 09, 2012 version 1.29. LINK::#Change History:: at bottom.
+Jost Muxfeldt
 
 Warning::
 TabbedView is maintained only for backward compatabiity!. Please use LINK::Classes/TabbedView2:: for new code. (you may have to activate the TabbedView2 Quark).
@@ -503,44 +503,6 @@ v=TabbedView(nil,nil,["1","two","three","four","5"]).tabWidth_(70).tabHeight_(13
 TabbedView(nil,nil,["1","two","three","four","5"]).tabWidth_(70).tabHeight_(30).tabCurve_(3);
 )
 
-::
-
-Section::Change History
-LIST::
-## Aug 27, 2007 :  code optimized; instanceVar tabPosition. Version 1.0;
-## Aug 24, 2007 :  small code optimizations Version 1.01;
-## Aug 23, 2007 :  fixed small bug when bounds=nil  Version 1.02;
-## Aug 30, 2007 :  added scroll option. Convenience new methods can now  take arguments of form arg:value  Version 1.03;
-## Sep   2, 2007 :  FlowView contents will now reposition in real time if tab  position is changed. tabPosition getter. Version 1.04;
-			Tabs can switch during drags(cocoa only);
-## Feb 12, 2008 :  relativeOrigin variable added to adjust to new SCCompositeView behavior. Swing compatibility. Version 1.10;
-
-## Feb 16, 2008 :  Version 1.11;  Swing themes adjusted to use no transparency.
-			deprecated: newRGB and newRGBLabels ;
-			use new methods: newColor and newColorLabels instead.
-			swingFactor defaults to 7 (integers work better than floats,
-## Feb 19, 2008 :  Version 1.12;
-			focus_() deprecated;   use  focus(index) instead.
-			focused added.
-## Feb 19, 2008 :  Version 1.13;
-			focused removed and changed to activeTab.
-			All variables that had a double s in "focussed", changed to singel s;
-## Feb 20, 2008 :  Version 1.14;  Fixed returned tab on add and insert methods
-
-## Feb 20, 2008 :  Version 1.15;  added font variable. other bug fixes
-
-## Feb  26, 2008 :  Version 1.20;  added followEdges option.
-## July 09, 2008 :    Version 1.21;  updates for SC3.21
-## Dec 15, 2008 :  Version 1.22;   changed  swing font calculation
-## Dec 19, 2008 :  Version 1.23;   changed  swing font calculation
-## Jan  28, 2008 :  Version 1.24;   fixed loop bug (thanks Fredrik Olofsson) . relativeOrigin deprecated (always use r/o)
-## Jun  11, 2009 :  Version 1.25;   removed all calls to relativeOrigin. focusFrameColor_(color) and unfocusTabs_(bool).
-						arg w changed to parent
-## July 15, 2009: Version 1.26; GUI context change  bug fixed (thanks to sciss).  Font calculations put in an AppClock.
-## July 26, 2009: Version 1.27; removed AppClock and returned to factored font calculation for swing. AppClock causes
-			flow layout problems
-## Aug 01, 2009: Version 1.28;  small fix to Help file
-## Oct 09, 2012: Version 1.29;  Removed deprecated methods. QT support. SCDoc Support.
 ::
 
 
