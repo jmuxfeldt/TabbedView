@@ -26,12 +26,12 @@ an array of strings. determines how many tabs there are. default ["tab1", "tab2"
 
 ARGUMENT:: colors
 an array of colors. if the array is smaller than the amount of labels, the color series repeats.
-For convenience, a color scheme is automatically created using these colors. 
+For convenience, a color scheme is automatically created using these colors.
 You cannot use gradients here, because the tabs are drawn with Pen.
 Gradients only work with background_;
-Custom color schemes and shapes can be controlled with instance variables	
+Custom color schemes and shapes can be controlled with instance variables
 or with the *new variations below.
- 
+
 ARGUMENT:: name
 a name for the window if a new window is created (view==nil) -- default " "
 
@@ -54,10 +54,7 @@ METHOD:: newBasic
 create a very basic TabbedView
 METHOD:: newTransparent
 create a transparent TabbedView
-METHOD:: newRGB
-deprecated, use newColor
-METHOD:: newRGBLabels
-deprecated, use newColorLabels
+
 
 
 INSTANCEMETHODS::
@@ -68,7 +65,7 @@ METHOD:: views
 returns:: an array of Composite/Scroll Views
 
 METHOD:: add
-adds a tab with label 
+adds a tab with label
 
 ARGUMENT:: label
 string, the label
@@ -76,7 +73,7 @@ string, the label
 ARGUMENT:: index
 int, (optional) the index at which the tab is inserted (if nil, add to the end)
 
-returns::  the tab container that was added 
+returns::  the tab container that was added
 
 METHOD:: insert
 inserts a tab  at index with label string
@@ -87,7 +84,7 @@ the index at which the tab is inserted
 ARGUMENT:: label
 (describe argument here)
 
-returns::  the tab container that was added 
+returns::  the tab container that was added
 
 METHOD:: removeAt
 remove tab at Index
@@ -157,7 +154,7 @@ Color of the focus frame of the tabs. Cocoa only
 
 
 METHOD:: unfocusTabs
-Unfocuses the UserView which draws the tabs after a tab is clicked. 
+Unfocuses the UserView which draws the tabs after a tab is clicked.
 	  		Defaut on Cocoa or QT is false, otherwise true. (because Swing can't hide focus frames);
 
 METHOD:: backgrounds
@@ -241,16 +238,16 @@ CODE::
 (
 t=TabbedView(); // use Flow Style
 
-	t.views[0].flow({|w| 
+	t.views[0].flow({|w|
 		GUI.button.new(w,Rect(50,50,250,50))
 		.states_([["control the tab with method 'focus' -->"]]).action_({t.focus(1)})
 	});
-	
-	t.views[1].flow({|w| 
+
+	t.views[1].flow({|w|
 		GUI.button.new(w,Rect(50,50,200,100))
 		.states_([["go to last tab"]]).action_({t.focus(2)})
 	});
-	
+
 )
 ::
 
@@ -287,7 +284,7 @@ v.views[0].flow({arg w;
 	ActionButton(w,"tabs right",{v.tabPosition_(\right)},148,50);
 	w.startRow;
 	ActionButton(w,"tabs bottom",{v.tabPosition_(\bottom)},300,50);
-	
+
 	GUI.button.new(w,300@50)
 		.states_([["set followEdges=false",Color.black,Color.red.alpha_(0.2)],
 			["set followEdges=true",Color.black,Color.green.alpha_(0.2)]])
@@ -330,12 +327,12 @@ v.removeAt(2)
 
 resize_()
 
-( 
+(
 w=GUI.window.new.front;
 v=TabbedView.newColorLabels(w,Rect(40,40,280,280),Array.fill(12,{|i| "tab"++i.asString})).tabPosition_(\right).followEdges_(false);
 v.resize_(5);
 GUI.slider.new(v.views[0],Rect(10,80,200,30)).resize_(2);
-) 
+)
 ::
 
 STRONG:: nest TabbedViews & use scrolling ::
@@ -349,7 +346,7 @@ v=TabbedView.newPacked(nil,Rect(200,200,600,400).insetBy(20,20),["1","2","3"])
 
 q=TabbedView.newColorLabels(v.views[0],nil,["tab1.1","tab1.2","tab1.3"], scroll: true)
 		.tabPosition_(\right).resize_(5).followEdges_(false);
-		
+
 q.views[0].flow({ arg w;
 	78.do({ arg i;
 		b = Button(w, Rect(rrand(20,300),rrand(20,300), 75, 24));
@@ -364,10 +361,10 @@ GUI.slider.new(q.views[1],q.views[1].bounds.insetBy(50,50));
 
 STRONG:: user functions:   focus and unfocus ::
 
- turn on/off scopes , e.g. 
- 
-CODE::    
-( 
+ turn on/off scopes , e.g.
+
+CODE::
+(
 v=TabbedView.new();
 v.focusActions[1]={"tab2 is focused".postln};
 v.unfocusActions[1]={"tab2 just unfocused".postln};
@@ -378,9 +375,9 @@ v.unfocusActions[1]={"tab2 just unfocused".postln};
 
 STRONG:: focusFrameColor_(color) and unfocusTabs_(bool) ::
 The tabs are drawn with user view which have a clear focus frame on Cocoa. On Swing, the frame cannot be made clear, so by default the tabs are unfocused after clicking. You can change this if it interferes with your tabbing scheme.
- 
-CODE::       
-( 
+
+CODE::
+(
 v=TabbedView.new();
 
 v.unfocusTabs_(false);  // default is false on Cocoa, true otherwise;
@@ -393,13 +390,13 @@ STRONG:: default autosizing tabs ::
 
 defaults to auto on *new, but other themes use fixedwidths:
 
-CODE::   
+CODE::
 (
-TabbedView.new(nil,Rect(150,100,400,500),["1","two","threeeeeeeeeeee","four","5"]); 
+TabbedView.new(nil,Rect(150,100,400,500),["1","two","threeeeeeeeeeee","four","5"]);
 )
 
 (
-v=TabbedView.newFlat(nil,Rect(150,100,400,300),["1","two","threeeeeeeeeee","four","5"]); 
+v=TabbedView.newFlat(nil,Rect(150,100,400,300),["1","two","threeeeeeeeeee","four","5"]);
 v.tabWidth_(\auto);
 )
 
@@ -407,9 +404,9 @@ v.tabWidth_(\auto);
 
 STRONG:: fixed tab sizes ::
 
-CODE::  
+CODE::
 (
-TabbedView(nil,nil,["1","two","three","four","5"]).tabWidth_(70);  
+TabbedView(nil,nil,["1","two","three","four","5"]).tabWidth_(70);
 )
 ::
 
@@ -417,7 +414,7 @@ STRONG:: set font ::
 
 Swing fonts only work within certain limits for now. use swingFactor_   to adjust the conversion.
 
-CODE:: 
+CODE::
 (
 v=TabbedView.newBasic.font_(GUI.font.new("Monaco",9)).tabHeight_(18);
 
@@ -440,30 +437,30 @@ v=TabbedView.newTall.font_(GUI.font.new("Helvetica",18)).tabPosition_(\left);
 v=TabbedView.newTall.font_(GUI.font.new("Helvetica",36)).tabHeight_(\auto).tabWidth_(\auto);
 
 )
-:: 
+::
 
 STRONG:: Set colors with an argument to .new ::
 Colors can wrap around if there are less than there are labels.
    	Unfocused colors are calculated automatically.
-CODE::  	
+CODE::
 (
 v=TabbedView(nil,nil,Array.fill(8,{|i| i.asString}),
 	[Color.rand,Color.rand,Color.rand]);
-	//Colors can wrap around 
+	//Colors can wrap around
 )
 ::
 
 STRONG:: Set colors very specifically to your own taste using set methods ::
 
-CODE::  
+CODE::
 (
-v=TabbedView.new(nil,nil,["one","two","three"]); 
-	//Colors can wrap around 
+v=TabbedView.new(nil,nil,["one","two","three"]);
+	//Colors can wrap around
 v.labelColors_([Color.rand,Color.rand,Color.rand]);
 )
 
 (
-v=TabbedView.new(nil,nil,["one","two","three"]); 
+v=TabbedView.new(nil,nil,["one","two","three"]);
 v.labelColors_([Color.red,Color.blue,Color.yellow]);
 v.unfocusedColors_([Color.red.alpha_(0.1),Color.blue.alpha_(0.1),Color.yellow.alpha_(0.1)]);
 v.backgrounds_([Color.red.alpha_(0.1),Color.blue.alpha_(0.1),Color.yellow.alpha_(0.1)]);
@@ -476,7 +473,7 @@ STRONG:: adjust padding and curves for small autowidth ::
 
 labelPadding  only has an effect on autowidth
 
-CODE:: 
+CODE::
 (
 v=TabbedView(nil,nil,Array.fill(20,{|i| i.asString}));
 v.labelPadding_(8);  	//tighter padding
@@ -497,13 +494,13 @@ CODE::
 // super flat and elegant
 
 (
-v=TabbedView(nil,nil,["1","two","three","four","5"]).tabWidth_(70).tabHeight_(13).tabCurve_(3); 
+v=TabbedView(nil,nil,["1","two","three","four","5"]).tabWidth_(70).tabHeight_(13).tabCurve_(3);
 )
 
 // super tall and clear
 
 (
-TabbedView(nil,nil,["1","two","three","four","5"]).tabWidth_(70).tabHeight_(30).tabCurve_(3); 
+TabbedView(nil,nil,["1","two","three","four","5"]).tabWidth_(70).tabHeight_(30).tabCurve_(3);
 )
 
 ::
@@ -515,32 +512,32 @@ LIST::
 ## Aug 23, 2007 :  fixed small bug when bounds=nil  Version 1.02;
 ## Aug 30, 2007 :  added scroll option. Convenience new methods can now  take arguments of form arg:value  Version 1.03;
 ## Sep   2, 2007 :  FlowView contents will now reposition in real time if tab  position is changed. tabPosition getter. Version 1.04;
-			Tabs can switch during drags(cocoa only); 
+			Tabs can switch during drags(cocoa only);
 ## Feb 12, 2008 :  relativeOrigin variable added to adjust to new SCCompositeView behavior. Swing compatibility. Version 1.10;
 
-## Feb 16, 2008 :  Version 1.11;  Swing themes adjusted to use no transparency.  
+## Feb 16, 2008 :  Version 1.11;  Swing themes adjusted to use no transparency.
 			deprecated: newRGB and newRGBLabels ;
 			use new methods: newColor and newColorLabels instead.
 			swingFactor defaults to 7 (integers work better than floats,
-## Feb 19, 2008 :  Version 1.12;  
-			focus_() deprecated;   use  focus(index) instead. 
+## Feb 19, 2008 :  Version 1.12;
+			focus_() deprecated;   use  focus(index) instead.
 			focused added.
-## Feb 19, 2008 :  Version 1.13;  
+## Feb 19, 2008 :  Version 1.13;
 			focused removed and changed to activeTab.
 			All variables that had a double s in "focussed", changed to singel s;
-## Feb 20, 2008 :  Version 1.14;  Fixed returned tab on add and insert methods  
+## Feb 20, 2008 :  Version 1.14;  Fixed returned tab on add and insert methods
 
-## Feb 20, 2008 :  Version 1.15;  added font variable. other bug fixes  
+## Feb 20, 2008 :  Version 1.15;  added font variable. other bug fixes
 
-## Feb  26, 2008 :  Version 1.20;  added followEdges option.  
-## July 09, 2008 :    Version 1.21;  updates for SC3.21 
-## Dec 15, 2008 :  Version 1.22;   changed  swing font calculation 
+## Feb  26, 2008 :  Version 1.20;  added followEdges option.
+## July 09, 2008 :    Version 1.21;  updates for SC3.21
+## Dec 15, 2008 :  Version 1.22;   changed  swing font calculation
 ## Dec 19, 2008 :  Version 1.23;   changed  swing font calculation
 ## Jan  28, 2008 :  Version 1.24;   fixed loop bug (thanks Fredrik Olofsson) . relativeOrigin deprecated (always use r/o)
-## Jun  11, 2009 :  Version 1.25;   removed all calls to relativeOrigin. focusFrameColor_(color) and unfocusTabs_(bool).  
+## Jun  11, 2009 :  Version 1.25;   removed all calls to relativeOrigin. focusFrameColor_(color) and unfocusTabs_(bool).
 						arg w changed to parent
 ## July 15, 2009: Version 1.26; GUI context change  bug fixed (thanks to sciss).  Font calculations put in an AppClock.
-## July 26, 2009: Version 1.27; removed AppClock and returned to factored font calculation for swing. AppClock causes 
+## July 26, 2009: Version 1.27; removed AppClock and returned to factored font calculation for swing. AppClock causes
 			flow layout problems
 ## Aug 01, 2009: Version 1.28;  small fix to Help file
 ## Oct 09, 2012: Version 1.29;  Removed deprecated methods. QT support. SCDoc Support.
